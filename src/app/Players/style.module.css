@@ -1,0 +1,9 @@
+.players {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.initializeButton {
+    margin-top: 20px;
+    height: 25px;
+}
