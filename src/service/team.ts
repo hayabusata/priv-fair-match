@@ -64,7 +64,8 @@ function exhausiveSearch(frontPlayers: Player[], alphaTeam: Player[], betaTeam: 
             }
         }
 
-        if (teamAFronts.length !== frontPlayers.length/2 || teamBFronts.length !== frontPlayers.length/2) continue;
+        // TODO: Playerが8人前提の実装になっている
+        if ((teamAFronts.length + alphaTeam.length) !== 4 || (teamBFronts.length + betaTeam.length) !== 4) continue;
 
         // 各チームの勝ち数を計算
         const alphaTeamWin = alphaTeam[0]?.win ?? 0;
