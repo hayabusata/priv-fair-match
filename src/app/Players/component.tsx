@@ -3,7 +3,7 @@
 import React, { useState }  from "react"
 import { PlayerInput } from "./Player/component";
 import styles from "./style.module.css";
-import { useAllPlayers } from "@/hooks/usePlayer";
+import { useSetAllPlayers } from "@/hooks/usePlayer";
 import { generateTeams } from "@/service/team";
 import { useSetAlpha, useSetBeta } from "@/hooks/useTeam";
 
@@ -12,7 +12,7 @@ export const Players = () => {
 
     const [allPlayerNames, setAllPlayerNames] = useState<string[]>(new Array(maxPlayerNum).fill(""));
     // const [allPlayers, setAllPlayers] = useState<Player[]>([]);
-    const {allPlayers, setAllPlayers} = useAllPlayers()
+    const setAllPlayers = useSetAllPlayers()
     const [isAnchorInputs, setIsAnchorInputs] = useState<boolean[]>(Array(maxPlayerNum).fill(false));
     
     const setAlphaList = useSetAlpha();

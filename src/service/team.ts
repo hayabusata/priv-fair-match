@@ -13,10 +13,18 @@ export function generateTeams(allPlayers: AllPlayers) {
     anchorPlayers.forEach((anchor, index) => {
         // 後衛が偶数なら、同数にわける
         if (anchorPlayers.length % 2 === 0) {
-            index % 2 === 0 ? alphaTeam.push(anchor) : betaTeam.push(anchor);
+            if (index % 2 === 0) {
+                alphaTeam.push(anchor) 
+            } else {
+                betaTeam.push(anchor);
+            }
         // 後衛が奇数なら、勝ちが多い側を後衛多めに
         } else {
-            index <= anchorPlayers.length / 2 ? alphaTeam.push(anchor) : betaTeam.push(anchor);
+            if (index <= anchorPlayers.length / 2) {
+                alphaTeam.push(anchor);
+            }  else {
+                betaTeam.push(anchor);
+            }
         }
     });
 
@@ -44,11 +52,11 @@ function exhausiveSearch(frontPlayers: Player[], alphaTeam: Player[], betaTeam: 
         beta: Player[]
     } = {alpha: [], beta: []};
 
-    for (let mask = 0; mask < (1 << 6); mask++) {
+    for (let mask = 0; mask < (1 << frontPlayers.length); mask++) {
         const teamAFronts: Player[] = [];
         const teamBFronts: Player[] = [];
 
-        for (let i = 0; i < 6; i++) {
+        for (let i = 0; i < frontPlayers.length; i++) {
             if ((mask & (1 << i)) !== 0) {
                 teamAFronts.push(frontPlayers[i]);
             } else {
@@ -56,20 +64,22 @@ function exhausiveSearch(frontPlayers: Player[], alphaTeam: Player[], betaTeam: 
             }
         }
 
-        if (teamAFronts.length !== 3 || teamBFronts.length !== 3) continue;
+        if (teamAFronts.length !== frontPlayers.length/2 || teamBFronts.length !== frontPlayers.length/2) continue;
 
         // 各チームの勝ち数を計算
-      const teamAWins = alphaTeam[0].win + teamAFronts.reduce((sum, p) => sum + p.win, 0);
-      const teamBWins = betaTeam[0].win + teamBFronts.reduce((sum, p) => sum + p.win, 0);
-      const diff = Math.abs(teamAWins - teamBWins);
+        const alphaTeamWin = alphaTeam[0]?.win ?? 0;
+        const betaTeamWin = betaTeam[0]?.win ?? 0;
+        const teamAWins = alphaTeamWin + teamAFronts.reduce((sum, p) => sum + p.win, 0);
+        const teamBWins = betaTeamWin + teamBFronts.reduce((sum, p) => sum + p.win, 0);
+        const diff = Math.abs(teamAWins - teamBWins);
 
-      if (diff < minDiff) {
-        minDiff = diff;
-        bestMatchup = {
-          alpha: teamAFronts,
-          beta: teamBFronts,
-        };
-      }
+        if (diff < minDiff) {
+            minDiff = diff;
+            bestMatchup = {
+            alpha: teamAFronts,
+            beta: teamBFronts,
+            };
+        }
     }
 
     return bestMatchup;

@@ -30,11 +30,6 @@ export const PlayerInput = ({
                         list.push(i === index ? event.target.value : allPlayerNames[i])
                     }
                     setAllPlayerNames(list)
-                    // 下のコードはなぜ動かない？
-                    // setAllPlayerNames(allPlayerNames.map((name, nameIndex) => {
-                    //     console.log(nameIndex,":", index)
-                    //     return nameIndex === index ? event.target.value : name;
-                    // }))
                 }}
             />
             <input type="checkbox"

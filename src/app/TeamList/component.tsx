@@ -1,6 +1,6 @@
 "use client"
 
-import { useAllPlayers, useAllPlayersValue } from "@/hooks/usePlayer"
+import { useAllPlayers } from "@/hooks/usePlayer"
 import { generateTeams } from "@/service/team";
 import styles from "./style.module.css";
 import { useAlpha, useBeta } from "@/hooks/useTeam";
@@ -11,9 +11,8 @@ export const TeamList = () => {
     
     const {alphaList, setAlphaList} = useAlpha();
     const {betaList, setBetaList} = useBeta();
-
-    // console.log(allPlayers)
     
+    /* eslint @typescript-eslint/no-explicit-any: 0 */
     const win = (e: any) => {
         const winners = "alpha" === e.currentTarget.getAttribute("data-winner")
             ? alphaList.slice(-1)[0]
