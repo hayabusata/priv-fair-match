@@ -1,0 +1,21 @@
+.alphaButton {
+    background-color: #F08080;
+    border-color: #F08080;
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+    width: 90px;
+}
+
+.betaButton {
+    background-color: #1E90FF;
+    border-color: #1E90FF;
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+    width: 90px;
+}
+
+.alphaButton + .betaButton {
+    margin-left: 15px;
+}

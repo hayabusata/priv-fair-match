@@ -31,9 +31,6 @@ export const TeamList = () => {
         const { alphaTeam, betaTeam } = generateTeams(newAllPlayers);
         setAlphaList([...alphaList,alphaTeam]);
         setBetaList([...betaList, betaTeam]);
-
-        // console.log("alpha:",alphaList.slice(-1)[0])
-        // console.log("beta:",betaList.slice(-1)[0])
     }
 
     return (
@@ -75,8 +72,8 @@ export const TeamList = () => {
                     
                 </tbody>
             </table>
-            <button onClick={win} data-winner="alpha" data-team={alphaList.slice(-1)[0]}>alpha 勝利</button>
-            <button onClick={win} data-winner="beta" data-team={betaList.slice(-1)[0]}>beta 勝利</button>
+            <button onClick={win} data-winner="alpha" data-team={alphaList.slice(-1)[0]} className={styles.alphaButton}>alpha 勝利</button>
+            <button onClick={win} data-winner="beta" data-team={betaList.slice(-1)[0]}  className={styles.betaButton}>beta 勝利</button>
         </div>
     )
 }
