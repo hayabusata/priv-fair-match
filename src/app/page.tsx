@@ -6,8 +6,13 @@ export default function Home() {
   return (
     <div className={styles.page}>
       <h1>8人用プラべチーム分け</h1>
-      <p style={{fontSize:"14px"}}>スプラトゥーンのプライベートマッチにおいて、後衛の人数およびチーム勝率を均等にチーム分けを行います。</p>
-      <p style={{fontSize:"14px"}}>名前の横のチェックボックスにチェックすると、そのプレイヤーは後衛として扱われてチーム分けされます。</p>
+      <p>スプラトゥーンのプライベートマッチにおいて、以下がチーム間で等しくなるようチーム分けを行います。</p>
+      <ul style={{ listStylePosition: "inside" }}>
+        <li>後衛の人数</li>
+        <li>プレイヤーの勝率</li>
+      </ul>
+      <br/>
+      <p>名前の横のチェックボックスにチェックすると、そのプレイヤーは後衛として扱われてチーム分けされます。</p>
       <br/>
       <Players />
       <TeamList />
