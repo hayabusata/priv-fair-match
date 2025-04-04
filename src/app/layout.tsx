@@ -14,7 +14,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "fair private match",
-  description: "スプラトゥーンのプライベートマッチにおいて、後衛の人数およびチーム勝率を均等にチーム分けを行います。",
+  description:
+    "スプラトゥーンのプライベートマッチにおいて、後衛の人数およびチーム勝率を均等にチーム分けを行います。",
 };
 
 export default function RootLayout({
