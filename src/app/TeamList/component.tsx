@@ -33,6 +33,8 @@ export const TeamList = () => {
         setBetaList([...betaList, betaTeam]);
     }
 
+    const mostWins = allPlayers.reduce((max, player) => Math.max(max, player.win), -Infinity)
+
     return (
         <div>
             <table className={styles.teamList}>
@@ -55,14 +57,24 @@ export const TeamList = () => {
                                 <th scope="row" rowSpan={2}>{index+1}</th>
                                 <th scope="row">alpha</th>
                                 {alpha.map((player,key) => {
-                                    return <th key={key}>{player.name}({player.win})</th>
+                                    return (
+                                        <th key={key}>
+                                            <span>{player.name}</span>
+                                            <span className={`${player.win === mostWins ? styles.mostWins : ""} ${styles.win}`}>({player.win})</span>
+                                        </th>
+                                    );
                                 })}
                                 
                             </tr>
                             <tr>
                                 <th scope="row">beta</th>
                                 {betaList[index].map((player,key) => {
-                                    return <th key={key}>{player.name}({player.win})</th>
+                                     return (
+                                        <th key={key}>
+                                            <span>{player.name}</span>
+                                            <span className={`${player.win === mostWins ? styles.mostWins : ""} ${styles.win}`}>({player.win})</span>
+                                        </th>
+                                    );
                                 })}
                                 
                             </tr>

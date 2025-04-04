@@ -16,6 +16,14 @@
     width: 90px;
 }
 
+.win {
+    font-size: 12px;
+}
+
+.mostWins {
+    color: red;
+}
+
 .alphaButton + .betaButton {
     margin-left: 15px;
 }
