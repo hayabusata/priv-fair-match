@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { PlayerInput } from "./Player/component";
 import styles from "./style.module.css";
 import { useSetAllPlayers } from "@/hooks/usePlayer";
-import { generateTeams } from "@/service/team";
+import { generateTeams } from "@/utils/generateTeam";
 import { useSetAlpha, useSetBeta } from "@/hooks/useTeam";
 
 export const Players = () => {

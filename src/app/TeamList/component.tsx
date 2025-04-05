@@ -1,7 +1,7 @@
 "use client";
 
 import { useAllPlayers } from "@/hooks/usePlayer";
-import { generateTeams } from "@/service/team";
+import { generateTeams } from "@/utils/generateTeam";
 import styles from "./style.module.css";
 import { useAlpha, useBeta } from "@/hooks/useTeam";
 
