@@ -36,6 +36,23 @@ export const TeamList = () => {
     setBetaList([...betaList, betaTeam]);
   };
 
+  const back = () => {
+    const alpha = alphaList[alphaList.length - 2].map((player) => {
+      return {
+        ...player,
+      };
+    });
+    const beta = betaList[betaList.length - 2].map((player) => {
+      return {
+        ...player,
+      };
+    });
+
+    setAllPlayers(alpha.concat(beta));
+    setAlphaList(alphaList.slice(0, alphaList.length - 1));
+    setBetaList(betaList.slice(0, betaList.length - 1));
+  };
+
   const mostWins = allPlayers.reduce(
     (max, player) => Math.max(max, player.win),
     -Infinity,
@@ -112,6 +129,10 @@ export const TeamList = () => {
         className={styles.betaButton}
       >
         beta 勝利
+      </button>
+
+      <button onClick={back} className={styles.backButton}>
+        巻き戻す
       </button>
     </div>
   );

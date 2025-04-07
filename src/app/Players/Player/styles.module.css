@@ -1,0 +1,8 @@
+.playerInputArea {
+  /* display: flex; */
+}
+
+.isAnchor {
+  margin-left: 4px;
+  transform: scale(1.45);
+}

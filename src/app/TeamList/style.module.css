@@ -16,6 +16,13 @@
   width: 90px;
 }
 
+.backButton {
+  border-radius: 5px;
+  border: none;
+  padding: 5px;
+  width: 80px;
+}
+
 .win {
   font-size: 12px;
 }
@@ -26,4 +33,8 @@
 
 .alphaButton + .betaButton {
   margin-left: 15px;
+}
+
+.betaButton + .backButton {
+  margin-left: 90px;
 }
