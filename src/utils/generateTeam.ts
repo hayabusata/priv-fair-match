@@ -44,7 +44,10 @@ export function generateTeams(allPlayers: AllPlayers) {
     betaTeam.push(bestMatchup.beta[i]);
   }
 
-  return { alphaTeam, betaTeam };
+  // betaにalpha固定のプレイヤーが含まれていたら入れ替える
+  return alphaTeam.findIndex((player) => player.fixedAlpha)
+    ? { alphaTeam, betaTeam }
+    : { betaTeam, alphaTeam };
 }
 
 // 前衛の組み合わせを全探索し、勝率の差が小さくなるよう分ける

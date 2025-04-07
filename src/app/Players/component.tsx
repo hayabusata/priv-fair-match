@@ -28,6 +28,7 @@ export const Players = () => {
       win: 0,
       lose: 0,
       isAnchor: isAnchorInputs[index],
+      fixedAlpha: index === 0, // プレイヤー1はalpha固定
     }));
     setAllPlayers(players);
     const { alphaTeam, betaTeam } = generateTeams(players);

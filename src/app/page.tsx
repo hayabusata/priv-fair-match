@@ -18,6 +18,9 @@ export default function Home() {
         名前の横のチェックボックスにチェックすると、そのプレイヤーは後衛として扱われてチーム分けされます。
       </p>
       <br />
+      <p>プレイヤー1はalpha固定です。</p>
+      <br />
+      <br />
       <Players />
       <TeamList />
     </div>
