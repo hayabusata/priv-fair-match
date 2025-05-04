@@ -45,9 +45,9 @@ export function generateTeams(allPlayers: AllPlayers) {
   }
 
   // betaにalpha固定のプレイヤーが含まれていたら入れ替える
-  return alphaTeam.findIndex((player) => player.fixedAlpha)
-    ? { alphaTeam, betaTeam }
-    : { betaTeam, alphaTeam };
+  return betaTeam.findIndex((player) => player.fixedAlpha) > -1
+    ? { alphaTeam: betaTeam, betaTeam: alphaTeam }
+    : { alphaTeam: alphaTeam, betaTeam: betaTeam };
 }
 
 // 前衛の組み合わせを全探索し、勝率の差が小さくなるよう分ける
@@ -90,14 +90,24 @@ function exhausiveSearch(
       betaTeamWin + teamBFronts.reduce((sum, p) => sum + p.win, 0);
     const diff = Math.abs(teamAWins - teamBWins);
 
+    // 勝ち数の差がより小さい組み合わせを次のチームとする
+    // 他の候補が出てきたら、50%の確率でbestMatchUpとする
     if (diff < minDiff) {
       minDiff = diff;
       bestMatchup = {
         alpha: teamAFronts,
         beta: teamBFronts,
       };
+    } else if (diff === minDiff) {
+      const random = Math.random();
+      if (random < 0.5) {
+        bestMatchup = {
+          alpha: teamAFronts,
+          beta: teamBFronts,
+        };
+      }
     }
-  }
+  } 
 
   return bestMatchup;
 }
